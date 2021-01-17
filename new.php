@@ -3,6 +3,8 @@ include('inc/functions.php');
 
 $page_title = "New";
 
+$title = $date = $time_spent = $learned = $resources = $tags = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $title =    trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING));
@@ -42,22 +44,22 @@ include('inc/header.php');
                     ?>
                     <form method="post" action="new.php">
                         <label for="title"> Title*</label>
-                        <input id="title" type="text" name="title"><br>
+                        <input id="title" type="text" name="title" value="<?php echo $title; ?>"><br>
 
                         <label for="date">Date*</label>
-                        <input id="date" type="date" name="date"><br>
+                        <input id="date" type="date" name="date" value="<?php echo $date; ?>"><br>
 
                         <label for="time-spent"> Time Spent*</label>
-                        <input id="time-spent" type="text" name="time_spent"><br>
+                        <input id="time-spent" type="text" name="time_spent" value="<?php echo $time_spent; ?>"><br>
 
                         <label for="what-i-learned">What I Learned*</label>
-                        <textarea id="what-i-learned" rows="5" name="learned"></textarea>
+                        <textarea id="what-i-learned" rows="5" name="learned"><?php echo $learned; ?></textarea>
 
                         <label for="resources-to-remember">Resources to Remember</label>
-                        <textarea id="resources-to-remember" rows="5" name="resources"></textarea>
+                        <textarea id="resources-to-remember" rows="5" name="resources"><?php echo $resources; ?></textarea>
 
                         <label for="tags-that-fit">Tags</label>
-                        <textarea id="tags-that-fit" rows="1" name="tags"></textarea>
+                        <textarea id="tags-that-fit" rows="1" name="tags"><?php echo $tags; ?></textarea>
 
                         <p id="required">* required</p>
                         <input type="submit" value="Publish Entry" class="button">
